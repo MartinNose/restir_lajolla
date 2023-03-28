@@ -1,0 +1,243 @@
+<scene version="2.1.0">
+
+<!-- Defaults, these can be set via the command line: -Darg=value -->
+
+	<!-- <default name="spp" value="128"/> -->
+	<!-- <default name="resx" value="1920"/> -->
+	<!-- <default name="resy" value="1080"/> -->
+
+	<default name="spp" value="256"/>
+	<default name="resx" value="800"/>
+	<default name="resy" value="600"/>
+
+	<medium type="homogeneous" id="medium1">
+		<rgb name="sigmaA" value="1.0 1.5 1.5"/>
+		<rgb name="sigmaS" value="0.5 0.75 0.25"/>
+		<float name="scale" value="200"/>
+	</medium>
+
+	<medium type="homogeneous" id="medium2">
+		<rgb name="sigmaA" value="1 0.5 0.4"/>
+		<rgb name="sigmaS" value="1 0.6 1.2"/>
+		<float name="scale" value="0.005"/>
+	</medium>
+
+<!-- Camera and Rendering Parameters -->
+
+	<integrator type="volpath">
+		<integer name="max_depth" value="-1"/>
+	</integrator>
+
+	<sensor type="perspective">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="39.597608"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<float name="near_clip" value="0.100000"/>
+		<float name="far_clip" value="100.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="-163.20013021693447"/>
+			<rotate y="1" angle="-21.199957787424946"/>
+			<rotate z="1" angle="-179.9998957259296"/>
+			<translate value="15.822547 13.640697 32.767353"/>
+		</transform>
+		<sampler type="independent">
+			<integer name="sample_count" value="$spp"/>
+		</sampler>
+
+		<film type="hdrfilm" id="film">
+			<integer name="width" value="1920"/>
+			<integer name="height" value="1080"/>
+			<string name="pixelFormat" value="rgb"/>
+			<boolean name="banner" value="false"/>
+
+			<rfilter type="gaussian"/>
+		</film>
+		<ref id="medium2"/>
+	</sensor>
+
+
+<!-- Emitters -->
+<!-- 
+	<shape type="rectangle">
+		<boolean name="flip_normals" value="true"/>
+		<transform name="to_world">
+			<matrix value="-3.408468 -2.401072 0.149891 10.835148 -1.499137 2.467229 0.342097 16.062635 -3.079694 1.456399 -0.332419 -14.661144 0.000000 0.000000 0.000000 1.000000"/>
+		</transform>
+		<emitter type="area">
+			<rgb value="300.460099 300.460099 300.460099" name="radiance"/>
+		</emitter>
+		<ref name="exterior" id="medium2"/>
+		<bsdf type="null"/>
+	</shape> -->
+
+
+<!-- Shapes -->
+
+	<shape type="ply">
+		<string name="filename" value="meshes/Cube_001.ply"/>
+		<!-- <boolean name="face_normals" value="true"/> -->
+		<bsdf type="diffuse">
+			<rgb name="reflectance" value="0.8 0.2 0.3"/>
+		</bsdf>
+		<emitter type="area">
+			<spectrum name="radiance" value="100"/>
+		</emitter>
+			<!-- <bsdf type="disneymetal">
+			<rgb name="baseColor" value="0.82 0.67 0.16"/>
+			<float name="roughness" value="0.3"/>
+			<float name="anisotropic" value="0.8"/>
+		</bsdf> -->
+		<ref name="exterior" id="medium2"/>
+	</shape>
+	<shape type="ply">
+		<string name="filename" value="meshes/Cube_002.ply"/>
+		<boolean name="face_normals" value="true"/>
+
+
+		<ref name="exterior" id="medium2"/>
+		<bsdf type="disneyglass">
+			<rgb name="baseColor" value="0.82 0.67 0.16"/>
+			<float name="roughness" value="0.1"/>
+			<float name="anisotropic" value="0.8"/>
+			<float name="eta" value="1.1"/>
+		</bsdf>
+	</shape>
+	<shape type="ply">
+	
+		<string name="filename" value="meshes/Cube_003.ply"/>
+		<boolean name="face_normals" value="true"/>
+		<ref name="exterior" id="medium2"/>
+		
+		<bsdf type="disneybsdf">
+			<rgb name="baseColor" value="0.1 0.1 0.3"/>
+			<float name="specularTransmission" value="0.5"/>
+			<float name="metallic" value="0.5"/>
+			<float name="subsurface" value="0.5"/>
+			<float name="specular" value="0.3"/>
+			<float name="roughness" value="0.9"/>
+			<float name="specularTint" value="0.0"/>
+			<float name="anisotropic" value="0.1"/>
+			<float name="sheen" value="0.0"/>
+			<float name="sheenTint" value="0.5"/>
+			<float name="clearcoat" value="0.0"/>
+			<float name="clearcoatGloss" value="0.5"/>
+			<float name="eta" value="1.5"/>
+		</bsdf>
+	</shape>
+	<shape type="ply">
+		<string name="filename" value="meshes/Suzanne.ply"/>
+		<boolean name="face_normals" value="true"/>
+		<bsdf type="disneybsdf">
+			<rgb name="baseColor" value="0.75 0.83 0.46"/>
+			<float name="specularTransmission" value="1.0"/>
+			<float name="metallic" value="0.1"/>
+			<float name="subsurface" value="0.5"/>
+			<float name="specular" value="0.5"/>
+			<float name="roughness" value="0.2"/>
+			<float name="specularTint" value="0.5"/>
+			<float name="anisotropic" value="0.0"/>
+			<float name="sheen" value="1.0"/>
+			<float name="sheenTint" value="0.5"/>
+			<float name="clearcoat" value="0.5"/>
+			<float name="clearcoatGloss" value="0.5"/>
+			<float name="eta" value="1.5"/>
+		</bsdf>
+		<ref name="exterior" id="medium2"/>
+	</shape>
+	
+	<shape type="ply">
+		<string name="filename" value="meshes/Torus.ply"/>
+		<emitter type="area">
+			<rgb name="radiance" value="2.4, 1, 2.4"/>
+		</emitter>
+		<boolean name="face_normals" value="true"/>
+		<ref name="exterior" id="medium2"/>
+
+		<bsdf type="diffuse">
+			<rgb name="reflectance" value="0.0 0.0 0.0"/>
+		</bsdf>
+		<emitter type="area">
+			<spectrum name="radiance" value="10"/>
+		</emitter>
+	</shape>
+	
+	<shape type="ply">
+		<string name="filename" value="meshes/Cube_004.ply"/>
+		<boolean name="face_normals" value="true"/>
+		<ref name="exterior" id="medium2"/>
+		<emitter type="area">
+			<rgb name="radiance" value="8 46.4 64"/>
+		</emitter>
+		<bsdf type="disneybsdf">
+			<rgb name="baseColor" value="0.5 0.6 0.7"/>
+			<float name="specularTransmission" value="0.2"/>
+			<float name="metallic" value="0.8"/>
+			<float name="subsurface" value="0.2"/>
+			<float name="specular" value="0.7"/>
+			<float name="roughness" value="0.1"/>
+			<float name="specularTint" value="0.0"/>
+			<float name="anisotropic" value="0.3"/>
+			<float name="sheen" value="0.5"/>
+			<float name="sheenTint" value="0.5"/>
+			<float name="clearcoat" value="0.5"/>
+			<float name="clearcoatGloss" value="0.5"/>
+			<float name="eta" value="1.5"/>
+		</bsdf>
+	</shape>
+	<shape type="ply">
+		<string name="filename" value="meshes/Icosphere.ply"/>
+		<boolean name="face_normals" value="true"/>
+		<ref name="exterior" id="medium2"/>
+		<bsdf type="disneybsdf">
+			<rgb name="baseColor" value="0.5 0.9 0.84"/>
+			<float name="specularTransmission" value="1.0"/>
+			<float name="metallic" value="0.0"/>
+			<float name="subsurface" value="1.0"/>
+			<float name="specular" value="1.0"/>
+			<float name="roughness" value="0.1"/>
+			<float name="specularTint" value="0.5"/>
+			<float name="anisotropic" value="0.1"/>
+			<float name="sheen" value="0.5"/>
+			<float name="sheenTint" value="0.5"/>
+			<float name="clearcoat" value="0.5"/>
+			<float name="clearcoatGloss" value="0.5"/>
+			<float name="eta" value="1.5"/>
+		</bsdf>
+	</shape>
+	<shape type="ply">
+		<string name="filename" value="meshes/Cone.ply"/>
+			<emitter type="area">
+			<spectrum name="radiance" value="100"/>
+		</emitter>
+		<ref name="exterior" id="medium2"/>
+		<bsdf type="diffuse">
+			<rgb name="reflectance" value="0.0 0.0 0.0"/>
+		</bsdf>
+	</shape>
+	<shape type="ply">
+		<string name="filename" value="meshes/Sphere.ply"/>
+		<boolean name="face_normals" value="true"/>
+		<ref name="exterior" id="medium2"/>
+		<ref name="interior" id="medium1"/>	
+	</shape>
+	<shape type="ply">
+		<ref name="exterior" id="medium2"/>
+		<string name="filename" value="meshes/SurfPatch.ply"/>
+		<bsdf type="disneybsdf">
+			<rgb name="baseColor" value="0.2 0.2 0.3"/>
+			<float name="specularTransmission" value="0.5"/>
+			<float name="metallic" value="0.5"/>
+			<float name="subsurface" value="0.5"/>
+			<float name="specular" value="0.5"/>
+			<float name="roughness" value="0.2"/>
+			<float name="specularTint" value="0.5"/>
+			<float name="anisotropic" value="0.1"/>
+			<float name="sheen" value="0.5"/>
+			<float name="sheenTint" value="0.5"/>
+			<float name="clearcoat" value="0.5"/>
+			<float name="clearcoatGloss" value="0.5"/>
+			<float name="eta" value="1.5"/>
+		</bsdf>
+	</shape>
+</scene>

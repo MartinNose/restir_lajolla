@@ -1,0 +1,2114 @@
+<scene version="2.1.0">
+
+<!-- Defaults, these can be set via the command line: -Darg=value -->
+
+	<default name="spp" value="1"/>
+	<!-- <default name="resx" value="505"/> -->
+	<!-- <default name="resy" value="283"/> -->
+	<default name="resx" value="1800"/>
+	<default name="resy" value="1080"/>
+
+<!-- Camera and Rendering Parameters -->
+
+	
+	<!-- <integrator type="path"><integer name="maxDepth" value="2"/></integrator> -->
+	<!-- <integrator type="manylight"></integrator> -->
+	<integrator type="restir">
+        <integer name="neighbour_select" value="5"/>
+        <integer name="spatial_iteration" value="1"/>
+        <integer name="reservior_size" value="32"/>
+    </integrator>
+	
+	<sensor type="perspective">
+		<string name="fov_axis" value="x"/>
+		<float name="fov" value="67.102599"/>
+		<float name="principal_point_offset_x" value="0.000000"/>
+		<float name="principal_point_offset_y" value="-0.000000"/>
+		<transform name="to_world">
+			<rotate x="1" angle="-168.8844595310292"/>
+			<rotate y="1" angle="-0.5551915531585162"/>
+			<rotate z="1" angle="-179.24526910566993"/>
+			<translate value="0.035672 1.223135 1.859623"/>
+		</transform>
+		<sampler type="independent">
+			<integer name="sample_count" value="$spp"/>
+		</sampler>
+		<film type="hdrfilm">
+			<integer name="width" value="$resx"/>
+			<integer name="height" value="$resy"/>
+		</film>
+	</sensor>
+
+<!-- Materials -->
+	<bsdf type="diffuse" id="box">
+		<spectrum name="reflectance" value="400:0.343, 404:0.445, 408:0.551, 412:0.624, 416:0.665, 420:0.687, 424:0.708, 428:0.723, 432:0.715, 436:0.71, 440:0.745, 444:0.758, 448:0.739, 452:0.767, 456:0.777, 460:0.765, 464:0.751, 468:0.745, 472:0.748, 476:0.729, 480:0.745, 484:0.757, 488:0.753, 492:0.75, 496:0.746, 500:0.747, 504:0.735, 508:0.732, 512:0.739, 516:0.734, 520:0.725, 524:0.721, 528:0.733, 532:0.725, 536:0.732, 540:0.743, 544:0.744, 548:0.748, 552:0.728, 556:0.716, 560:0.733, 564:0.726, 568:0.713, 572:0.74, 576:0.754, 580:0.764, 584:0.752, 588:0.736, 592:0.734, 596:0.741, 600:0.74, 604:0.732, 608:0.745, 612:0.755, 616:0.751, 620:0.744, 624:0.731, 628:0.733, 632:0.744, 636:0.731, 640:0.712, 644:0.708, 648:0.729, 652:0.73, 656:0.727, 660:0.707, 664:0.703, 668:0.729, 672:0.75, 676:0.76, 680:0.751, 684:0.739, 688:0.724, 692:0.73, 696:0.74, 700:0.737"/>
+	</bsdf>
+
+	<bsdf type="diffuse" id="white">
+		<spectrum name="reflectance" value="400:0.343, 404:0.445, 408:0.551, 412:0.624, 416:0.665, 420:0.687, 424:0.708, 428:0.723, 432:0.715, 436:0.71, 440:0.745, 444:0.758, 448:0.739, 452:0.767, 456:0.777, 460:0.765, 464:0.751, 468:0.745, 472:0.748, 476:0.729, 480:0.745, 484:0.757, 488:0.753, 492:0.75, 496:0.746, 500:0.747, 504:0.735, 508:0.732, 512:0.739, 516:0.734, 520:0.725, 524:0.721, 528:0.733, 532:0.725, 536:0.732, 540:0.743, 544:0.744, 548:0.748, 552:0.728, 556:0.716, 560:0.733, 564:0.726, 568:0.713, 572:0.74, 576:0.754, 580:0.764, 584:0.752, 588:0.736, 592:0.734, 596:0.741, 600:0.74, 604:0.732, 608:0.745, 612:0.755, 616:0.751, 620:0.744, 624:0.731, 628:0.733, 632:0.744, 636:0.731, 640:0.712, 644:0.708, 648:0.729, 652:0.73, 656:0.727, 660:0.707, 664:0.703, 668:0.729, 672:0.75, 676:0.76, 680:0.751, 684:0.739, 688:0.724, 692:0.73, 696:0.74, 700:0.737"/>
+	</bsdf>
+
+	<bsdf type="diffuse" id="red">
+		<spectrum name="reflectance" value="400:0.04, 404:0.046, 408:0.048, 412:0.053, 416:0.049, 420:0.05, 424:0.053, 428:0.055, 432:0.057, 436:0.056, 440:0.059, 444:0.057, 448:0.061, 452:0.061, 456:0.06, 460:0.062, 464:0.062, 468:0.062, 472:0.061, 476:0.062, 480:0.06, 484:0.059, 488:0.057, 492:0.058, 496:0.058, 500:0.058, 504:0.056, 508:0.055, 512:0.056, 516:0.059, 520:0.057, 524:0.055, 528:0.059, 532:0.059, 536:0.058, 540:0.059, 544:0.061, 548:0.061, 552:0.063, 556:0.063, 560:0.067, 564:0.068, 568:0.072, 572:0.08, 576:0.09, 580:0.099, 584:0.124, 588:0.154, 592:0.192, 596:0.255, 600:0.287, 604:0.349, 608:0.402, 612:0.443, 616:0.487, 620:0.513, 624:0.558, 628:0.584, 632:0.62, 636:0.606, 640:0.609, 644:0.651, 648:0.612, 652:0.61, 656:0.65, 660:0.638, 664:0.627, 668:0.62, 672:0.63, 676:0.628, 680:0.642, 684:0.639, 688:0.657, 692:0.639, 696:0.635, 700:0.642"/>
+	</bsdf>
+
+	<bsdf type="diffuse" id="green">
+		<spectrum name="reflectance" value="400:0.092, 404:0.096, 408:0.098, 412:0.097, 416:0.098, 420:0.095, 424:0.095, 428:0.097, 432:0.095, 436:0.094, 440:0.097, 444:0.098, 448:0.096, 452:0.101, 456:0.103, 460:0.104, 464:0.107, 468:0.109, 472:0.112, 476:0.115, 480:0.125, 484:0.14, 488:0.16, 492:0.187, 496:0.229, 500:0.285, 504:0.343, 508:0.39, 512:0.435, 516:0.464, 520:0.472, 524:0.476, 528:0.481, 532:0.462, 536:0.447, 540:0.441, 544:0.426, 548:0.406, 552:0.373, 556:0.347, 560:0.337, 564:0.314, 568:0.285, 572:0.277, 576:0.266, 580:0.25, 584:0.23, 588:0.207, 592:0.186, 596:0.171, 600:0.16, 604:0.148, 608:0.141, 612:0.136, 616:0.13, 620:0.126, 624:0.123, 628:0.121, 632:0.122, 636:0.119, 640:0.114, 644:0.115, 648:0.117, 652:0.117, 656:0.118, 660:0.12, 664:0.122, 668:0.128, 672:0.132, 676:0.139, 680:0.144, 684:0.146, 688:0.15, 692:0.152, 696:0.157, 700:0.159"/>
+	</bsdf>
+
+	<bsdf type="diffuse" id="light">
+		<spectrum name="reflectance" value="400:0.78, 500:0.78, 600:0.78, 700:0.78"/>
+	</bsdf>
+	<bsdf type="twosided" id="mat-Material">
+        <bsdf type="diffuse" id="diffmat">
+			<rgb name="reflectance" value="0.8 0.8 0.8"/>
+		</bsdf> -->
+		<!-- <bsdf type="principled">
+			<rgb value="0.800000 0.800000 0.800000" name="base_color"/>
+			<float name="spec_tint" value="0.000000"/>
+			<float name="spec_trans" value="0.000000"/>
+			<float name="metallic" value="0.000000"/>
+			<float name="anisotropic" value="0.000000"/>
+			<float name="roughness" value="0.500000"/>
+			<float name="sheen" value="0.000000"/>
+			<float name="sheen_tint" value="0.500000"/>
+			<float name="clearcoat" value="0.000000"/>
+			<float name="clearcoat_gloss" value="0.173205"/>
+			<float name="specular" value="0.500000"/>
+		</bsdf> -->
+	</bsdf>
+	<bsdf type="twosided" id="default-bsdf">
+		<bsdf type="diffuse"/>
+	</bsdf>
+	<bsdf type="twosided" id="mat-Default">
+		<!-- <bsdf type="disneybsdf">
+			<rgb value="0.800000 0.800000 0.800000" name="base_color"/>
+			<float name="spec_tint" value="0.000000"/>
+			<float name="spec_trans" value="0.000000"/>
+			<float name="metallic" value="0.000000"/>
+			<float name="anisotropic" value="0.000000"/>
+			<float name="roughness" value="1.000000"/>
+			<float name="sheen" value="0.000000"/>
+			<float name="sheen_tint" value="0.500000"/>
+			<float name="clearcoat" value="0.000000"/>
+			<float name="clearcoat_gloss" value="0.173205"/>
+			<float name="specular" value="0.001000"/>
+		</bsdf> -->
+        <bsdf type="diffuse" id="diffmat">
+			<rgb name="reflectance" value="0.8 0.8 0.8"/>
+		</bsdf> -->
+	</bsdf>
+	<bsdf type="twosided" id="mat-Default OBJ.001">
+        <bsdf type="diffuse" id="diffmat">
+			<rgb name="reflectance" value="0.8 0.8 0.8"/>
+		</bsdf> -->
+		<!-- <bsdf type="disneybsdf">
+			<rgb value="0.800000 0.800000 0.800000" name="base_color"/>
+			<float name="spec_tint" value="0.000000"/>
+			<float name="spec_trans" value="0.000000"/>
+			<float name="metallic" value="0.000000"/>
+			<float name="anisotropic" value="0.000000"/>
+			<float name="roughness" value="0.500000"/>
+			<float name="sheen" value="0.000000"/>
+			<float name="sheen_tint" value="0.500000"/>
+			<float name="clearcoat" value="0.000000"/>
+			<float name="clearcoat_gloss" value="0.173205"/>
+			<float name="specular" value="0.500000"/>
+		</bsdf> -->
+	</bsdf>
+
+<!-- Emitters -->
+
+<shape type="ply">
+    <emitter type="area" id="light1">
+        <rgb name="radiance" value="2.8325097284335743, 0.12134547482532843, 4.732518478947723"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_001.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light2">
+        <rgb name="radiance" value="0.2221368777250715, 0.9488035083955099, 3.0285737476850185"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_002.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light3">
+        <rgb name="radiance" value="0.8151979233122397, 0.8571474644160032, 0.9269766175028726"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_003.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light4">
+        <rgb name="radiance" value="4.4789629957880965, 0.1494018656655105, 0.5578719825135803"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_004.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light5">
+        <rgb name="radiance" value="1.4893516176037291, 1.6012966866981826, 3.8599606363189003"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_005.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light6">
+        <rgb name="radiance" value="3.1196309564250795, 1.8037272801711328, 1.1642624647444422"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_006.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light7">
+        <rgb name="radiance" value="0.5501057641172685, 4.3489102036593845, 4.125325190956841"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_007.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light8">
+        <rgb name="radiance" value="2.0913196951023716, 2.2814795105767423, 2.0523757964774574"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_008.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light9">
+        <rgb name="radiance" value="4.981546320353419, 3.089035103425306, 4.787950385393652"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_009.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light10">
+        <rgb name="radiance" value="4.521593874641706, 2.6036926306148156, 3.5351748805787437"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_010.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light11">
+        <rgb name="radiance" value="4.942721089717573, 2.017809776691407, 4.685732862301936"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_011.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light12">
+        <rgb name="radiance" value="2.612529331067872, 0.2921767064007763, 2.0551218380663387"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_012.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light13">
+        <rgb name="radiance" value="4.420705421704732, 0.9913955696141286, 4.887268534212563"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_013.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light14">
+        <rgb name="radiance" value="1.2415210631838036, 4.400087874334885, 1.6761371205321385"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_014.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light15">
+        <rgb name="radiance" value="1.4482748560228638, 0.40889942156621895, 4.305059510495667"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_015.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light16">
+        <rgb name="radiance" value="3.05366215848607, 0.5204596991899313, 3.007322445556748"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_016.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light17">
+        <rgb name="radiance" value="4.071844139790678, 0.6021113077686818, 4.285182660300494"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_017.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light18">
+        <rgb name="radiance" value="2.3507031251739567, 1.4964021006306187, 0.19239861114467183"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_018.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light19">
+        <rgb name="radiance" value="1.5512425536263208, 0.9979685702332991, 2.05371816509015"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_019.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light20">
+        <rgb name="radiance" value="3.859798565734943, 3.023908149824161, 4.095122484915174"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_020.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light21">
+        <rgb name="radiance" value="4.9170474811181055, 0.9022845035456056, 4.841666897100965"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_021.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light22">
+        <rgb name="radiance" value="4.509904325618332, 3.902816135115285, 2.0099562869970073"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_022.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light23">
+        <rgb name="radiance" value="3.9596116281284304, 1.9139537759059988, 1.2747762995724492"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_023.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light24">
+        <rgb name="radiance" value="3.8187522123973148, 2.6109109778635853, 0.7396700303154025"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_024.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light25">
+        <rgb name="radiance" value="5.8066059301915516, 5.386180645436121, 5.859586733598447"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_025.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light26">
+        <rgb name="radiance" value="4.642625257499543, 2.1901722192277155, 0.7249501194675922"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_026.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light27">
+        <rgb name="radiance" value="2.17457517849739, 3.274489609507203, 1.761240429639379"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_027.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light28">
+        <rgb name="radiance" value="0.4631347316429796, 2.1221737080389347, 3.627384196100075"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_028.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light29">
+        <rgb name="radiance" value="4.303178605297556, 4.539201091236612, 1.8551102111882685"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_029.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light31">
+        <rgb name="radiance" value="3.08018711338393, 3.2562363409322383, 2.543891031866111"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_031.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light32">
+        <rgb name="radiance" value="3.8006191149249835, 3.9429992900999995, 1.820782563006547"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_032.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light33">
+        <rgb name="radiance" value="1.8140724693117032, 4.502848078671768, 3.5276548211348677"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_033.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light34">
+        <rgb name="radiance" value="2.3677337041420534, 3.1925468218362867, 4.278025200299884"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_034.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light35">
+        <rgb name="radiance" value="1.1682071564764813, 4.592390309012615, 0.9757498938725911"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_035.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light36">
+        <rgb name="radiance" value="3.8318112214111313, 0.11721947303647395, 2.6722751692115816"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_036.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light37">
+        <rgb name="radiance" value="0.6139762487111838, 3.321675790268714, 1.626831714096915"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_037.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light38">
+        <rgb name="radiance" value="4.239076388861712, 2.052573990839206, 3.124576776305269"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_038.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light39">
+        <rgb name="radiance" value="4.896470623780939, 3.815686468491703, 2.536508698306311"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_039.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light40">
+        <rgb name="radiance" value="1.810203871712221, 0.36801525451644224, 4.086717767363583"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_040.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light41">
+        <rgb name="radiance" value="1.3957446707783645, 4.011858938369063, 3.6962902838983562"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_041.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light42">
+        <rgb name="radiance" value="0.9229196648818605, 4.263879709269999, 0.40746587109960763"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_042.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light43">
+        <rgb name="radiance" value="3.0658962434761223, 4.416443740423695, 4.650852137977784"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_043.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light44">
+        <rgb name="radiance" value="3.3558379631790842, 3.2313438408112805, 1.360967673668484"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_044.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light45">
+        <rgb name="radiance" value="4.280216656833781, 2.802703999125147, 3.7546114851821604"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_045.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light46">
+        <rgb name="radiance" value="1.1761877504127427, 0.7176581856231323, 3.165402966652599"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_046.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light47">
+        <rgb name="radiance" value="2.3042966477191285, 1.3842599298778864, 0.9432253041795852"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_047.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light48">
+        <rgb name="radiance" value="3.5161730830072226, 1.0764540158645324, 0.6941342785853005"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_048.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light49">
+        <rgb name="radiance" value="2.973550420890886, 2.894682729787721, 4.03595671155567"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_049.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light50">
+        <rgb name="radiance" value="0.36455177758884294, 1.6564015363553575, 0.2585335279965112"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_050.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light51">
+        <rgb name="radiance" value="1.2211949519060594, 1.4940853468301714, 3.5009614152335296"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_051.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light52">
+        <rgb name="radiance" value="3.8488187462248664, 1.9990505007745711, 1.4781241201050848"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_052.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light53">
+        <rgb name="radiance" value="4.119455069600467, 0.38807166416949423, 0.5683632780060355"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_053.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light54">
+        <rgb name="radiance" value="4.252854160339966, 2.443427775206647, 2.027456516507013"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_054.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light55">
+        <rgb name="radiance" value="0.5287085906640243, 0.9811385833315672, 3.0533814401876906"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_055.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light56">
+        <rgb name="radiance" value="4.615683224289469, 1.7228194736511786, 0.8494344483203753"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_056.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light57">
+        <rgb name="radiance" value="4.043021289505392, 4.487133854754826, 0.9025851385351935"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_057.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light58">
+        <rgb name="radiance" value="3.911585428580305, 2.097841783624465, 1.8087646983706525"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_058.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light59">
+        <rgb name="radiance" value="1.6436968121447544, 3.7803209268991456, 2.676235793878276"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_059.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light60">
+        <rgb name="radiance" value="1.062259658450282, 4.42679813350167, 4.217496869141416"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_060.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light61">
+        <rgb name="radiance" value="4.381517925994379, 3.3419751762529804, 0.8695516272036813"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_061.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light62">
+        <rgb name="radiance" value="1.2153795834063075, 3.6056477531300506, 0.6299907353113715"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_062.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light63">
+        <rgb name="radiance" value="1.5380839734775142, 3.173930396969595, 0.08334024818763275"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_063.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light64">
+        <rgb name="radiance" value="4.754976246530119, 0.21333103938589282, 1.7568561723266645"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_064.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light65">
+        <rgb name="radiance" value="2.300929236144344, 3.9692853418202168, 1.4268945656787664"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_065.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light66">
+        <rgb name="radiance" value="0.43942112092866303, 3.727843795861962, 2.6017562561800087"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_066.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light67">
+        <rgb name="radiance" value="0.6039740919509246, 1.8500395238808913, 1.7062025616854504"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_067.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light68">
+        <rgb name="radiance" value="3.597693011912016, 3.610833283057831, 3.927041467060529"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_068.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light69">
+        <rgb name="radiance" value="1.1016938561408791, 3.556879517072252, 4.141110389625192"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_069.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light70">
+        <rgb name="radiance" value="1.093104284597961, 3.617596109888001, 1.3329863468623149"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_070.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light71">
+        <rgb name="radiance" value="1.8618340685820662, 3.6655324173066157, 3.250574799627495"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_071.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light72">
+        <rgb name="radiance" value="1.8495584866535335, 1.0266802247007378, 1.5577306961279291"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_072.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light73">
+        <rgb name="radiance" value="2.416534754327042, 1.0588057995875206, 0.5328895952864177"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_073.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light74">
+        <rgb name="radiance" value="2.7333965487846204, 2.3122448239275957, 0.773900619725606"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_074.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light75">
+        <rgb name="radiance" value="1.2349934508041216, 4.0554178671306405, 0.968921365654834"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_075.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light76">
+        <rgb name="radiance" value="2.272417166782094, 0.3440484201143623, 1.2442497534292896"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_076.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light77">
+        <rgb name="radiance" value="0.42290503174843064, 1.0309271459189344, 0.548408965154728"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_077.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light78">
+        <rgb name="radiance" value="2.20510056458126, 0.4752003942861954, 2.9808969402881758"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_078.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light79">
+        <rgb name="radiance" value="1.022312113159574, 3.432557667524367, 3.394712350823241"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_079.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light80">
+        <rgb name="radiance" value="2.0955263184691915, 3.1307967479119974, 1.027188078939535"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_080.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light81">
+        <rgb name="radiance" value="4.209729242580732, 0.9603494279578412, 1.0114277562045726"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_081.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light82">
+        <rgb name="radiance" value="4.241232014342653, 3.480979428703616, 4.44613554522216"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_082.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light83">
+        <rgb name="radiance" value="0.4619477131624189, 0.47277461880923743, 2.2918926036573763"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_083.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light84">
+        <rgb name="radiance" value="0.0721536184245608, 1.0700149234666205, 1.0749503027811447"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_084.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light85">
+        <rgb name="radiance" value="1.6345771750032152, 1.4324922580767652, 0.7969521449517813"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_085.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light86">
+        <rgb name="radiance" value="4.0785334009964584, 1.4079333309792008, 3.575435605755005"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_086.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light87">
+        <rgb name="radiance" value="2.7051388703526187, 1.1423425775272, 4.479102615896535"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_087.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light88">
+        <rgb name="radiance" value="0.3376072581895162, 3.53035904719321, 0.21251286074855602"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_088.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light89">
+        <rgb name="radiance" value="4.864179310277349, 1.895034831043385, 3.9616749401307834"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_089.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light90">
+        <rgb name="radiance" value="4.556856714664653, 3.479002194329353, 4.550604627864524"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_090.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light91">
+        <rgb name="radiance" value="2.12230539613628, 0.5618761142386658, 3.2333372684746626"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_091.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light92">
+        <rgb name="radiance" value="1.5353995047835356, 2.222817960242706, 2.6760433906656895"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_092.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light93">
+        <rgb name="radiance" value="4.807685840918282, 4.253461853986218, 4.288806041033794"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_093.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light94">
+        <rgb name="radiance" value="3.7263945239139766, 3.6192747996916834, 3.5976830554560624"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_094.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light95">
+        <rgb name="radiance" value="3.577888772422879, 3.659163556048365, 3.1584570750659253"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_095.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light96">
+        <rgb name="radiance" value="1.0781188140831655, 1.327422252347702, 0.782090683468063"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_096.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light97">
+        <rgb name="radiance" value="1.8761806794458709, 4.893780256172605, 4.860906821998722"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_097.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light98">
+        <rgb name="radiance" value="1.8304428010221407, 4.81905540692354, 3.0841555982712556"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_098.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light99">
+        <rgb name="radiance" value="4.961805123805141, 4.8925322288454804, 3.585227960858377"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_099.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light100">
+        <rgb name="radiance" value="1.491471339465778, 1.5597848230933504, 0.4802007028877092"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_100.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light101">
+        <rgb name="radiance" value="1.6292309353222527, 0.6265556198372463, 4.158573302298433"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_101.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light102">
+        <rgb name="radiance" value="1.3704438423193506, 4.378293560075715, 2.5187700361024006"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_102.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light103">
+        <rgb name="radiance" value="4.849996588805007, 1.469346605416909, 1.6642027392244108"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_103.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light104">
+        <rgb name="radiance" value="2.4848499873733694, 0.365719762034426, 2.872543401509681"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_104.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light105">
+        <rgb name="radiance" value="3.004683174102623, 1.5111250993847185, 0.15258491936650964"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_105.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light106">
+        <rgb name="radiance" value="3.0435821731760155, 3.041835016292633, 3.189028633106869"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_106.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light107">
+        <rgb name="radiance" value="2.187608966927157, 0.6753011523861036, 4.125265554109706"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_107.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light108">
+        <rgb name="radiance" value="2.8137140573552992, 4.701337054586677, 1.8275996075859173"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere_108.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+<shape type="ply">
+    <emitter type="area" id="light109">
+        <rgb name="radiance" value="3.155875390166506, 0.1416575407734061, 3.2264458713586075"/>
+    </emitter>
+    <string name="filename" value="meshes/Sphere.ply"/>
+    <ref id="default-bsdf" name="bsdf"/>
+</shape>
+
+    <!-- <shape type="sphere">
+        <point name="center" x="0.462514191865921" y="-0.4864264726638794" z="-0.8419440984725952"/>
+        <float name="radius" value="0.2092002034187317"/>
+        <emitter type="area" id="light25">
+            <rgb name="radiance" value="14.4135844676453955, 10.4705895258130105, 10.3904693416504751"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape> -->
+    <!-- <shape type="sphere">
+        <point name="center" x="-2.1288223266601562" y="0.6628696322441101" z="-2.2173140048980713"/>
+        <float name="radius" value="0.14458729326725006"/>
+        <emitter type="area" id="light1">
+            <rgb name="radiance" value="1.892595098188103, 0.809651777349365, 2.4518118287850705"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="0.5376402139663696" y="1.783544898033142" z="-2.3927438259124756"/>
+        <float name="radius" value="0.13152939081192017"/>
+        <emitter type="area" id="light2">
+            <rgb name="radiance" value="1.255523749712243, 4.6986644177218615, 1.132923466131367"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="-0.956779956817627" y="1.0745398998260498" z="-4.15192174911499"/>
+        <float name="radius" value="0.11681569367647171"/>
+        <emitter type="area" id="light3">
+            <rgb name="radiance" value="1.6101186355938162, 0.06885915216728877, 4.188002828923587"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="-0.9522532224655151" y="0.6412451863288879" z="-2.6720733642578125"/>
+        <float name="radius" value="0.10460010170936584"/>
+        <emitter type="area" id="light4">
+            <rgb name="radiance" value="1.8552776214370597, 1.9642280411212842, 2.380290774420808"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="-0.538765549659729" y="0.8752446174621582" z="-0.2134944200515747"/>
+        <float name="radius" value="0.0543084554374218"/>
+        <emitter type="area" id="light5">
+            <rgb name="radiance" value="3.747396119875037, 3.172250921430724, 2.935473112931252"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="0.6626659631729126" y="1.193371057510376" z="-1.327241063117981"/>
+        <float name="radius" value="0.1420566886663437"/>
+        <emitter type="area" id="light6">
+            <rgb name="radiance" value="3.3512064213828205, 0.5105259000745516, 4.327499326815415"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="-0.44690844416618347" y="0.3693169951438904" z="-5.339290618896484"/>
+        <float name="radius" value="0.2092002034187317"/>
+        <emitter type="area" id="light7">
+            <rgb name="radiance" value="4.829103977675331, 0.9612854961464817, 1.218575707889401"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="-3.0037245750427246" y="0.4262000322341919" z="-3.0468087196350098"/>
+        <float name="radius" value="0.2092002034187317"/>
+        <emitter type="area" id="light8">
+            <rgb name="radiance" value="2.3368601387388006, 3.1301818498641447, 2.775653821162286"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="1.3283034563064575" y="2.537137508392334" z="3.4563279151916504"/>
+        <float name="radius" value="0.2092002034187317"/>
+        <emitter type="area" id="light9">
+            <rgb name="radiance" value="2.4542474843451623, 1.9644126183832378, 1.4658231624718687"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="-5.64861536026001" y="3.234254837036133" z="-0.31584203243255615"/>
+        <float name="radius" value="0.2092002034187317"/>
+        <emitter type="area" id="light10">
+            <rgb name="radiance" value="0.9602359528824661, 1.530310778772808, 2.8735892312976357"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="1.462999939918518" y="0.43573105335235596" z="-0.6715524196624756"/>
+        <float name="radius" value="0.08578576892614365"/>
+        <emitter type="area" id="light11">
+            <rgb name="radiance" value="0.8051096941473546, 3.855425587088397, 1.3381940043987306"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="1.7977620363235474" y="0.22341406345367432" z="-1.9774099588394165"/>
+        <float name="radius" value="0.2092002034187317"/>
+        <emitter type="area" id="light12">
+            <rgb name="radiance" value="1.49842260768424, 0.6737668899474403, 1.7105040876630224"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="0.9830137491226196" y="0.43519127368927" z="1.6025270223617554"/>
+        <float name="radius" value="0.2092002034187317"/>
+        <emitter type="area" id="light13">
+            <rgb name="radiance" value="1.5917244347366255, 0.503650317668366, 0.7032287587946079"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="0.992867112159729" y="3.575200080871582" z="-2.1579084396362305"/>
+        <float name="radius" value="0.2092002034187317"/>
+        <emitter type="area" id="light14">
+            <rgb name="radiance" value="0.16389221792433073, 1.9543926385269184, 4.939737516525602"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="2.6145150661468506" y="1.764974594116211" z="-4.593512058258057"/>
+        <float name="radius" value="0.2092002034187317"/>
+        <emitter type="area" id="light15">
+            <rgb name="radiance" value="1.6404553957184582, 3.551909650842895, 3.8471309596507117"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="-1.8678432703018188" y="2.7472972869873047" z="-0.6076234579086304"/>
+        <float name="radius" value="0.2092002034187317"/>
+        <emitter type="area" id="light16">
+            <rgb name="radiance" value="1.2528163399981307, 4.569059594432593, 1.50327842331839"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="-3.223283529281616" y="0.6597487926483154" z="-2.5490801334381104"/>
+        <float name="radius" value="0.2092002034187317"/>
+        <emitter type="area" id="light17">
+            <rgb name="radiance" value="3.7685072997359628, 4.166267581821076, 3.613373141862499"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="-4.491064071655273" y="1.116361141204834" z="-1.759764552116394"/>
+        <float name="radius" value="0.2092002034187317"/>
+        <emitter type="area" id="light18">
+            <rgb name="radiance" value="0.09518501605464802, 3.7202993833890936, 4.134356183378148"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="3.91914963722229" y="3.5280981063842773" z="-2.2975285053253174"/>
+        <float name="radius" value="0.2092002034187317"/>
+        <emitter type="area" id="light19">
+            <rgb name="radiance" value="4.316725462824235, 0.8630988743346263, 1.7004493252321344"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="1.6905137300491333" y="-0.34576416015625" z="-0.7009073495864868"/>
+        <float name="radius" value="0.2092002034187317"/>
+        <emitter type="area" id="light20">
+            <rgb name="radiance" value="0.7239028247136542, 2.2640068151991226, 0.4748055307970339"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="-2.219144582748413" y="0.021913528442382812" z="-3.3893990516662598"/>
+        <float name="radius" value="0.2092002034187317"/>
+        <emitter type="area" id="light21">
+            <rgb name="radiance" value="2.589298989893529, 4.831477165089807, 3.7130979888075455"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="0.4059268832206726" y="2.9965949058532715" z="-5.312819957733154"/>
+        <float name="radius" value="0.2092002034187317"/>
+        <emitter type="area" id="light22">
+            <rgb name="radiance" value="2.4064107632329126, 0.5240256168526009, 4.86038771159085"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="-1.251412272453308" y="1.4504384994506836" z="-6.895600318908691"/>
+        <float name="radius" value="0.2092002034187317"/>
+        <emitter type="area" id="light23">
+            <rgb name="radiance" value="0.15603770980532727, 2.1063116008495357, 1.0411243976737505"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="0.026574790477752686" y="2.2226030826568604" z="0.047606371343135834"/>
+        <float name="radius" value="0.2092002034187317"/>
+        <emitter type="area" id="light24">
+            <rgb name="radiance" value="0.2952451991095245, 3.6731932744793756, 4.741067156380102"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="0.462514191865921" y="-0.4864264726638794" z="-0.8419440984725952"/>
+        <float name="radius" value="0.2092002034187317"/>
+        <emitter type="area" id="light25">
+            <rgb name="radiance" value="4.4135844676453955, 0.4705895258130105, 0.3904693416504751"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="1.1430268287658691" y="-0.3680107593536377" z="-1.7861348390579224"/>
+        <float name="radius" value="0.2092002034187317"/>
+        <emitter type="area" id="light26">
+            <rgb name="radiance" value="4.783878467473416, 3.6171839722264383, 1.704068415258031"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="-0.48070183396339417" y="-0.4334787130355835" z="-3.3002138137817383"/>
+        <float name="radius" value="0.2092002034187317"/>
+        <emitter type="area" id="light27">
+            <rgb name="radiance" value="1.5753248406269393, 2.2418970177384505, 3.924207470084644"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="-2.8861424922943115" y="-0.0054274797439575195" z="-1.7143051624298096"/>
+        <float name="radius" value="0.2092002034187317"/>
+        <emitter type="area" id="light28">
+            <rgb name="radiance" value="4.3529319291451865, 3.0676497657477686, 3.3028578562995077"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="1.0648306608200073" y="0.37077605724334717" z="-1.6319613456726074"/>
+        <float name="radius" value="0.2092002034187317"/>
+        <emitter type="area" id="light29">
+            <rgb name="radiance" value="4.032458741426476, 0.7675514881429468, 3.037392411307387"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="-1.938390851020813" y="0.24823236465454102" z="-1.1025714874267578"/>
+        <float name="radius" value="0.2092002034187317"/>
+        <emitter type="area" id="light30">
+            <rgb name="radiance" value="1.6072647022945326, 3.5388793753223786, 4.268076198187833"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="2.445530652999878" y="0.7316535115242004" z="-2.5367469787597656"/>
+        <float name="radius" value="0.2092002034187317"/>
+        <emitter type="area" id="light31">
+            <rgb name="radiance" value="1.2528711113010726, 1.6200220828664142, 2.939778956769689"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="-0.32417258620262146" y="1.2359635829925537" z="-3.5489869117736816"/>
+        <float name="radius" value="0.2092002034187317"/>
+        <emitter type="area" id="light32">
+            <rgb name="radiance" value="4.297759776786308, 2.925589596908893, 1.5238373313268083"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="-1.2034927606582642" y="1.0019010305404663" z="-2.44547700881958"/>
+        <float name="radius" value="0.2092002034187317"/>
+        <emitter type="area" id="light33">
+            <rgb name="radiance" value="0.7506427511742952, 4.140414102131679, 1.9567003656978865"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="2.1131057739257812" y="1.6068145036697388" z="-1.6492888927459717"/>
+        <float name="radius" value="0.05168703570961952"/>
+        <emitter type="area" id="light34">
+            <rgb name="radiance" value="0.8909824939680877, 2.7704376385320173, 3.0883311949491175"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="-1.2374080419540405" y="1.6222565174102783" z="-1.7232362031936646"/>
+        <float name="radius" value="0.04732012748718262"/>
+        <emitter type="area" id="light35">
+            <rgb name="radiance" value="0.1869251421128859, 2.5525061153567385, 0.6470072614774364"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="1.2451387643814087" y="1.6042029857635498" z="-1.7826837301254272"/>
+        <float name="radius" value="0.04732012748718262"/>
+        <emitter type="area" id="light36">
+            <rgb name="radiance" value="0.621021915463828, 0.41054175328726517, 2.420880042262663"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="-2.072129964828491" y="1.6513581275939941" z="-1.738966464996338"/>
+        <float name="radius" value="0.04732012748718262"/>
+        <emitter type="area" id="light37">
+            <rgb name="radiance" value="4.851038364091979, 0.13345454554395453, 0.24548857408538627"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="-1.0393412113189697" y="1.6208566427230835" z="-1.8729801177978516"/>
+        <float name="radius" value="0.04732012748718262"/>
+        <emitter type="area" id="light38">
+            <rgb name="radiance" value="1.4549524743052484, 1.0778282005470814, 4.07013730250467"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="-2.0729928016662598" y="1.6407240629196167" z="-1.9479753971099854"/>
+        <float name="radius" value="0.04732012748718262"/>
+        <emitter type="area" id="light39">
+            <rgb name="radiance" value="4.960120180237101, 4.919137718237733, 1.2479665277299723"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="-2.0738558769226074" y="1.6300899982452393" z="-2.156984806060791"/>
+        <float name="radius" value="0.04732012748718262"/>
+        <emitter type="area" id="light40">
+            <rgb name="radiance" value="0.9333207682135969, 2.289410069248181, 0.7963011486691723"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="-2.074718713760376" y="1.6194558143615723" z="-2.3659939765930176"/>
+        <float name="radius" value="0.04732012748718262"/>
+        <emitter type="area" id="light41">
+            <rgb name="radiance" value="2.7215792901599105, 2.956230719269236, 0.5391649574512342"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="-2.0755815505981445" y="1.6088217496871948" z="-2.5750036239624023"/>
+        <float name="radius" value="0.04732012748718262"/>
+        <emitter type="area" id="light42">
+            <rgb name="radiance" value="3.6702062467413006, 0.7376296673448951, 1.7485576311336448"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="-2.076444625854492" y="1.5981875658035278" z="-2.7840118408203125"/>
+        <float name="radius" value="0.04732012748718262"/>
+        <emitter type="area" id="light43">
+            <rgb name="radiance" value="3.729533469188242, 0.00901186228049522, 4.961782114943228"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="-2.0773074626922607" y="1.5875535011291504" z="-2.9930219650268555"/>
+        <float name="radius" value="0.04732012748718262"/>
+        <emitter type="area" id="light44">
+            <rgb name="radiance" value="3.8337734561469223, 1.1991230588971997, 4.787078312242739"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="-2.0781702995300293" y="1.5769193172454834" z="-3.202026844024658"/>
+        <float name="radius" value="0.04732012748718262"/>
+        <emitter type="area" id="light45">
+            <rgb name="radiance" value="0.9849149028827836, 3.777898342318657, 3.425437671281867"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="-2.079033613204956" y="1.5662853717803955" z="-3.4110405445098877"/>
+        <float name="radius" value="0.04732012748718262"/>
+        <emitter type="area" id="light46">
+            <rgb name="radiance" value="1.925052248247655, 0.8777340369405956, 2.883814857154456"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="-2.0798962116241455" y="1.555651068687439" z="-3.620044469833374"/>
+        <float name="radius" value="0.04732012748718262"/>
+        <emitter type="area" id="light47">
+            <rgb name="radiance" value="0.14255901821350114, 3.9455119313875975, 2.53605964262825"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="-2.080759286880493" y="1.5450170040130615" z="-3.8290560245513916"/>
+        <float name="radius" value="0.04732012748718262"/>
+        <emitter type="area" id="light48">
+            <rgb name="radiance" value="3.461678745181884, 2.739857088916601, 2.4216248855667724"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="-2.0816218852996826" y="1.5343831777572632" z="-4.038069248199463"/>
+        <float name="radius" value="0.04732012748718262"/>
+        <emitter type="area" id="light49">
+            <rgb name="radiance" value="0.12232235550784065, 1.072056981696481, 2.0418561103218273"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="-2.082484722137451" y="1.5237488746643066" z="-4.247076511383057"/>
+        <float name="radius" value="0.04732012748718262"/>
+        <emitter type="area" id="light50">
+            <rgb name="radiance" value="0.761159119298227, 3.1763718197917914, 0.2667694897283268"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="-2.083348512649536" y="1.5131149291992188" z="-4.456080913543701"/>
+        <float name="radius" value="0.04732012748718262"/>
+        <emitter type="area" id="light51">
+            <rgb name="radiance" value="3.9547789762573027, 1.02278351944749, 1.148973723992791"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="-2.0842108726501465" y="1.5024805068969727" z="-4.665088653564453"/>
+        <float name="radius" value="0.04732012748718262"/>
+        <emitter type="area" id="light52">
+            <rgb name="radiance" value="1.4639179356244187, 1.5220510580346018, 2.5557626327968492"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="-1.2382709980010986" y="1.6116224527359009" z="-1.932245135307312"/>
+        <float name="radius" value="0.04732012748718262"/>
+        <emitter type="area" id="light53">
+            <rgb name="radiance" value="3.045662107008627, 2.1060300201238498, 3.8643816893189453"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="-1.2391338348388672" y="1.6009883880615234" z="-2.1412546634674072"/>
+        <float name="radius" value="0.04732012748718262"/>
+        <emitter type="area" id="light54">
+            <rgb name="radiance" value="4.747773145310762, 2.8972646131058215, 2.6739917093197163"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="-1.2399966716766357" y="1.5903542041778564" z="-2.350263833999634"/>
+        <float name="radius" value="0.04732012748718262"/>
+        <emitter type="area" id="light55">
+            <rgb name="radiance" value="1.543449703487489, 3.9911762537362088, 4.55463825473788"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="-1.2408597469329834" y="1.579720139503479" z="-2.5592732429504395"/>
+        <float name="radius" value="0.04732012748718262"/>
+        <emitter type="area" id="light56">
+            <rgb name="radiance" value="1.1701965535900194, 0.4016342889937108, 4.0111655740405805"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="-1.241722583770752" y="1.569085955619812" z="-2.7682814598083496"/>
+        <float name="radius" value="0.04732012748718262"/>
+        <emitter type="area" id="light57">
+            <rgb name="radiance" value="1.4626829949543247, 4.137812238887588, 2.731055373043947"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="-1.24258553981781" y="1.5584518909454346" z="-2.9772918224334717"/>
+        <float name="radius" value="0.04732012748718262"/>
+        <emitter type="area" id="light58">
+            <rgb name="radiance" value="0.20393340832952522, 2.1891413755741174, 2.759243289915644"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="-1.2434484958648682" y="1.5478177070617676" z="-3.1862967014312744"/>
+        <float name="radius" value="0.04732012748718262"/>
+        <emitter type="area" id="light59">
+            <rgb name="radiance" value="1.268396667442574, 0.7298641524362731, 3.8872382872301876"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="-1.2443116903305054" y="1.5371837615966797" z="-3.395310401916504"/>
+        <float name="radius" value="0.04732012748718262"/>
+        <emitter type="area" id="light60">
+            <rgb name="radiance" value="4.324651345780665, 2.136879480707532, 0.729614701405551"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="-1.2451741695404053" y="1.5265494585037231" z="-3.6043143272399902"/>
+        <float name="radius" value="0.04732012748718262"/>
+        <emitter type="area" id="light61">
+            <rgb name="radiance" value="1.6513670269234066, 3.4608682707371634, 4.7945194710041585"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="-1.2460373640060425" y="1.5159153938293457" z="-3.813325881958008"/>
+        <float name="radius" value="0.04732012748718262"/>
+        <emitter type="area" id="light62">
+            <rgb name="radiance" value="2.287323534140841, 3.6479741523606233, 3.524113282651427"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="-1.2469000816345215" y="1.5052815675735474" z="-4.0223388671875"/>
+        <float name="radius" value="0.04732012748718262"/>
+        <emitter type="area" id="light63">
+            <rgb name="radiance" value="4.528545420803194, 1.5471344431868013, 4.3872653049850605"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="-1.24776291847229" y="1.4946472644805908" z="-4.231346130371094"/>
+        <float name="radius" value="0.04732012748718262"/>
+        <emitter type="area" id="light64">
+            <rgb name="radiance" value="2.43103289125935, 3.105284082367782, 1.4565281397269008"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="-1.2486265897750854" y="1.484013319015503" z="-4.440350532531738"/>
+        <float name="radius" value="0.04732012748718262"/>
+        <emitter type="area" id="light65">
+            <rgb name="radiance" value="2.7319364569439712, 2.970895247148096, 3.9575924514008474"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="-1.2494889497756958" y="1.4733788967132568" z="-4.649358749389648"/>
+        <float name="radius" value="0.04732012748718262"/>
+        <emitter type="area" id="light66">
+            <rgb name="radiance" value="0.32038901291117805, 0.8062717468561514, 3.9746211403816507"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="1.2442758083343506" y="1.5935689210891724" z="-1.9916926622390747"/>
+        <float name="radius" value="0.04732012748718262"/>
+        <emitter type="area" id="light67">
+            <rgb name="radiance" value="2.704327197824399, 1.3839372880544076, 2.1061838218694633"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="1.243412971496582" y="1.582934856414795" z="-2.20070219039917"/>
+        <float name="radius" value="0.04732012748718262"/>
+        <emitter type="area" id="light68">
+            <rgb name="radiance" value="1.3749374710156381, 3.2509105779210783, 0.48171072791516056"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="1.2425501346588135" y="1.572300672531128" z="-2.4097113609313965"/>
+        <float name="radius" value="0.04732012748718262"/>
+        <emitter type="area" id="light69">
+            <rgb name="radiance" value="1.8141329817893088, 0.43828145774274907, 1.797718795052789"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="1.2416870594024658" y="1.5616666078567505" z="-2.618720769882202"/>
+        <float name="radius" value="0.04732012748718262"/>
+        <emitter type="area" id="light70">
+            <rgb name="radiance" value="4.753911511999665, 0.6666327419221263, 1.733479228772508"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="1.2408242225646973" y="1.5510324239730835" z="-2.8277289867401123"/>
+        <float name="radius" value="0.04732012748718262"/>
+        <emitter type="area" id="light71">
+            <rgb name="radiance" value="4.805693571546568, 1.4291684624878775, 2.813811841919833"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="1.2399612665176392" y="1.540398359298706" z="-3.0367393493652344"/>
+        <float name="radius" value="0.04732012748718262"/>
+        <emitter type="area" id="light72">
+            <rgb name="radiance" value="4.4312342316961715, 4.127276180444824, 0.4966274324520398"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="1.239098310470581" y="1.529764175415039" z="-3.245744228363037"/>
+        <float name="radius" value="0.04732012748718262"/>
+        <emitter type="area" id="light73">
+            <rgb name="radiance" value="0.7801636659562378, 0.9903838000266119, 1.782380216569821"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="1.2382351160049438" y="1.5191302299499512" z="-3.4547576904296875"/>
+        <float name="radius" value="0.04732012748718262"/>
+        <emitter type="area" id="light74">
+            <rgb name="radiance" value="4.447744049259007, 4.355560972387516, 2.936715799143867"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="1.237372636795044" y="1.5084959268569946" z="-3.663761615753174"/>
+        <float name="radius" value="0.04732012748718262"/>
+        <emitter type="area" id="light75">
+            <rgb name="radiance" value="2.48145201132096, 3.847058510403854, 1.8974156872605357"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="1.2365094423294067" y="1.4978618621826172" z="-3.8727731704711914"/>
+        <float name="radius" value="0.04732012748718262"/>
+        <emitter type="area" id="light76">
+            <rgb name="radiance" value="1.0121197300654754, 2.9456777763777025, 1.1184361088890227"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="1.2356467247009277" y="1.4872280359268188" z="-4.081786632537842"/>
+        <float name="radius" value="0.04732012748718262"/>
+        <emitter type="area" id="light77">
+            <rgb name="radiance" value="4.252768393256869, 2.08210696175358, 1.6842724191553815"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="1.2347838878631592" y="1.4765937328338623" z="-4.2907938957214355"/>
+        <float name="radius" value="0.04732012748718262"/>
+        <emitter type="area" id="light78">
+            <rgb name="radiance" value="0.07173538039932703, 3.95136544242942, 1.847206852891612"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="1.233920693397522" y="1.4659596681594849" z="-4.499800682067871"/>
+        <float name="radius" value="0.04732012748718262"/>
+        <emitter type="area" id="light79">
+            <rgb name="radiance" value="4.966532005837295, 1.1621348958309734, 4.040483051425836"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="1.2330578565597534" y="1.4553256034851074" z="-4.7088093757629395"/>
+        <float name="radius" value="0.04732012748718262"/>
+        <emitter type="area" id="light80">
+            <rgb name="radiance" value="1.493871849583905, 2.2044576426148623, 0.8095723597179433"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="2.1121633052825928" y="1.5951989889144897" z="-1.877586007118225"/>
+        <float name="radius" value="0.05168703570961952"/>
+        <emitter type="area" id="light81">
+            <rgb name="radiance" value="3.2237627691264232, 1.1974557464147728, 1.716876663363106"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="2.111220598220825" y="1.5835835933685303" z="-2.105883836746216"/>
+        <float name="radius" value="0.05168703570961952"/>
+        <emitter type="area" id="light82">
+            <rgb name="radiance" value="0.06006232051558147, 4.151646426499911, 4.019802008991721"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="2.1102781295776367" y="1.5719680786132812" z="-2.334181308746338"/>
+        <float name="radius" value="0.05168703570961952"/>
+        <emitter type="area" id="light83">
+            <rgb name="radiance" value="3.994100424362617, 3.519026319646134, 3.1845061273327397"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="2.109335422515869" y="1.5603525638580322" z="-2.562479019165039"/>
+        <float name="radius" value="0.05168703570961952"/>
+        <emitter type="area" id="light84">
+            <rgb name="radiance" value="2.9318755396502603, 0.000740594137001449, 4.757260247931275"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="2.1083929538726807" y="1.5487371683120728" z="-2.7907755374908447"/>
+        <float name="radius" value="0.05168703570961952"/>
+        <emitter type="area" id="light85">
+            <rgb name="radiance" value="2.498476607493499, 4.997170521590165, 4.819705265732363"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="2.107450485229492" y="1.5371217727661133" z="-3.0190744400024414"/>
+        <float name="radius" value="0.05168703570961952"/>
+        <emitter type="area" id="light86">
+            <rgb name="radiance" value="2.0289681119741374, 2.3883812747400506, 4.890282673320721"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="2.1065077781677246" y="1.5255060195922852" z="-3.2473669052124023"/>
+        <float name="radius" value="0.05168703570961952"/>
+        <emitter type="area" id="light87">
+            <rgb name="radiance" value="0.061681944685835766, 1.5693249189911191, 2.9186037951784067"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="2.105565071105957" y="1.5138908624649048" z="-3.4756693840026855"/>
+        <float name="radius" value="0.05168703570961952"/>
+        <emitter type="area" id="light88">
+            <rgb name="radiance" value="0.9667907502625728, 0.3230520442242074, 2.688539706050172"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="2.1046228408813477" y="1.5022751092910767" z="-3.703961133956909"/>
+        <float name="radius" value="0.05168703570961952"/>
+        <emitter type="area" id="light89">
+            <rgb name="radiance" value="2.6318429054649135, 3.955585500454793, 2.0550936791896914"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="2.10368013381958" y="1.4906597137451172" z="-3.9322612285614014"/>
+        <float name="radius" value="0.05168703570961952"/>
+        <emitter type="area" id="light90">
+            <rgb name="radiance" value="4.500484894915992, 3.0181835793751595, 1.0796664800712852"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="2.1027376651763916" y="1.4790445566177368" z="-4.160562992095947"/>
+        <float name="radius" value="0.05168703570961952"/>
+        <emitter type="area" id="light91">
+            <rgb name="radiance" value="1.1004552129229184, 1.4668278675034285, 2.9658069248656944"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="2.101795196533203" y="1.4674288034439087" z="-4.388858795166016"/>
+        <float name="radius" value="0.05168703570961952"/>
+        <emitter type="area" id="light92">
+            <rgb name="radiance" value="1.7323944215452391, 0.8762137282863675, 1.874212013159961"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="2.1008517742156982" y="1.4558135271072388" z="-4.617150783538818"/>
+        <float name="radius" value="0.05168703570961952"/>
+        <emitter type="area" id="light93">
+            <rgb name="radiance" value="4.3855250086311255, 1.8254910365819903, 0.38934666592626455"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="2.099910020828247" y="1.444197654724121" z="-4.845446586608887"/>
+        <float name="radius" value="0.05168703570961952"/>
+        <emitter type="area" id="light94">
+            <rgb name="radiance" value="1.911344165011879, 1.9097191969338545, 4.429773006364542"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="-0.8925174474716187" y="1.6102592945098877" z="-2.059415340423584"/>
+        <float name="radius" value="0.04732012748718262"/>
+        <emitter type="area" id="light95">
+            <rgb name="radiance" value="1.736595413522382, 4.653944116017692, 4.294580198688197"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="-0.7456936836242676" y="1.599661946296692" z="-2.2458508014678955"/>
+        <float name="radius" value="0.04732012748718262"/>
+        <emitter type="area" id="light96">
+            <rgb name="radiance" value="1.9491216529118134, 0.3889691100073972, 4.755738846314438"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="-0.5988696813583374" y="1.589064598083496" z="-2.432286262512207"/>
+        <float name="radius" value="0.04732012748718262"/>
+        <emitter type="area" id="light97">
+            <rgb name="radiance" value="2.906795414749324, 3.0510074522108055, 1.3847878675075638"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="-0.45204609632492065" y="1.5784672498703003" z="-2.6187214851379395"/>
+        <float name="radius" value="0.04732012748718262"/>
+        <emitter type="area" id="light98">
+            <rgb name="radiance" value="3.805690852827258, 0.3218736326343885, 0.5567252276898144"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="-0.30522215366363525" y="1.5678699016571045" z="-2.805156707763672"/>
+        <float name="radius" value="0.04732012748718262"/>
+        <emitter type="area" id="light99">
+            <rgb name="radiance" value="0.3180911528865432, 4.718964815060903, 2.6007290212967717"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="-0.15839821100234985" y="1.5572725534439087" z="-2.9915924072265625"/>
+        <float name="radius" value="0.04732012748718262"/>
+        <emitter type="area" id="light100">
+            <rgb name="radiance" value="3.1442726592562065, 4.269125383350417, 1.3326792937385246"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="-0.011574625968933105" y="1.546675205230713" z="-3.1780271530151367"/>
+        <float name="radius" value="0.04732012748718262"/>
+        <emitter type="area" id="light101">
+            <rgb name="radiance" value="1.1890855240079672, 0.9443221154804271, 4.391603624924426"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="0.1352483034133911" y="1.536077857017517" z="-3.364462375640869"/>
+        <float name="radius" value="0.04732012748718262"/>
+        <emitter type="area" id="light102">
+            <rgb name="radiance" value="3.4779534036938937, 3.3584167267504577, 2.6990842235434083"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="0.28207194805145264" y="1.5254803895950317" z="-3.550896644592285"/>
+        <float name="radius" value="0.04732012748718262"/>
+        <emitter type="area" id="light103">
+            <rgb name="radiance" value="2.6095928889233235, 2.468206802235077, 0.43628533606806963"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="0.42889559268951416" y="1.514883041381836" z="-3.737332344055176"/>
+        <float name="radius" value="0.04732012748718262"/>
+        <emitter type="area" id="light104">
+            <rgb name="radiance" value="0.948371410447022, 4.760083650238626, 3.5451511488583183"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="0.5757191181182861" y="1.5042858123779297" z="-3.92376708984375"/>
+        <float name="radius" value="0.04732012748718262"/>
+        <emitter type="area" id="light105">
+            <rgb name="radiance" value="0.10159130977023978, 4.429901681880945, 4.828360955166623"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="0.7225430011749268" y="1.4936882257461548" z="-4.110201835632324"/>
+        <float name="radius" value="0.04732012748718262"/>
+        <emitter type="area" id="light106">
+            <rgb name="radiance" value="2.5826139545240725, 4.807102242747586, 2.2591825366963256"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="0.8693661689758301" y="1.483091115951538" z="-4.296637535095215"/>
+        <float name="radius" value="0.04732012748718262"/>
+        <emitter type="area" id="light107">
+            <rgb name="radiance" value="3.2957596263883984, 3.8183442574918693, 2.9118100075377296"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape>
+
+    <shape type="sphere">
+        <point name="center" x="1.016190528869629" y="1.4724935293197632" z="-4.483072757720947"/>
+        <float name="radius" value="0.04732012748718262"/>
+        <emitter type="area" id="light108">
+            <rgb name="radiance" value="2.211965043602209, 3.2876250730372156, 3.8798885884179364"/>
+        </emitter>
+        <ref id="default-bsdf" name="bsdf"/>
+    </shape> -->
+
+
+<!-- Emitters End -->
+<!-- Shapes -->
+
+	<shape type="ply">
+		<string name="filename" value="meshes/Cube.ply"/>
+		<boolean name="face_normals" value="true"/>
+		<bsdf type="roughplastic">
+			<rgb name="diffuseReflectance" value="0.82 0.67 0.16"/>
+			<float name="roughness" value="0.2"/>
+		</bsdf>
+	</shape>
+	<shape type="ply">
+		<string name="filename" value="meshes/Cone.ply"/>
+		<ref id="box"/>
+	</shape>
+	<shape type="ply">
+		<string name="filename" value="meshes/Cylinder.ply"/>
+        	<bsdf type="roughplastic">
+			<rgb name="diffuseReflectance" value="0.9 0.2 0.3"/>
+			<float name="roughness" value="0.3"/>
+		</bsdf> 
+		<!-- <bsdf type="disneybsdf">
+			<rgb name="baseColor" value="0.9 0.2 0.3"/>
+			<float name="specularTransmission" value="0.0"/>
+			<float name="metallic" value="0.0"/>
+			<float name="subsurface" value="0.8"/>
+			<float name="specular" value="0.3"/>
+			<float name="roughness" value="0.1"/>
+			<float name="specularTint" value="0.0"/>
+			<float name="anisotropic" value="0.0"/>
+			<float name="sheen" value="1.0"/>
+			<float name="sheenTint" value="0.5"/>
+			<float name="clearcoat" value="1.0"/>
+			<float name="clearcoatGloss" value="0.5"/>
+			<float name="eta" value="1.5"/>
+		</bsdf> -->
+	</shape>
+	<shape type="obj">
+		<string name="filename" value="meshes/left.obj"/>
+		<ref id="green"/>
+	</shape>
+
+	<shape type="obj">
+		<string name="filename" value="meshes/right.obj"/>
+		<ref id="red"/>
+	</shape>
+	<shape type="obj">
+		<string name="filename" value="meshes/back.obj"/>
+		<ref id="white"/>
+	</shape>
+
+	<shape type="obj">
+		<string name="filename" value="meshes/cbox_floor.obj"/>
+		<ref id="white"/>
+	</shape>
+
+	<shape type="ply">
+		<string name="filename" value="meshes/Cone_001.ply"/>
+		<ref id="default-bsdf" name="bsdf"/>
+	</shape>
+	<shape type="ply">
+		<string name="filename" value="meshes/Torus.ply"/>
+        <bsdf type="diffuse" id="diffmat">
+			<rgb name="reflectance" value="0.75 0.83 0.46"/>
+		</bsdf>
+		<!-- <bsdf type="disneybsdf">
+			<rgb name="baseColor" value="0.75 0.83 0.46"/>
+			<float name="specularTransmission" value="0.5"/>
+			<float name="metallic" value="0.1"/>
+			<float name="subsurface" value="0.0"/>
+			<float name="specular" value="1.0"/>
+			<float name="roughness" value="0.5"/>
+			<float name="specularTint" value="0.5"/>
+			<float name="anisotropic" value="0.0"/>
+			<float name="sheen" value="0.0"/>
+			<float name="sheenTint" value="0.5"/>
+			<float name="clearcoat" value="0.0"/>
+			<float name="clearcoatGloss" value="0.5"/>
+			<float name="eta" value="1.5"/>
+		</bsdf> -->
+	</shape>
+	<shape type="ply">
+		<string name="filename" value="meshes/bunny_fine.ply"/>
+          <bsdf type="roughplastic">
+			<rgb name="diffuseReflectance" value="0.75 0.83 0.83"/>
+			<float name="roughness" value="0.7"/>
+		</bsdf>
+		<!-- <bsdf type="disneybsdf">
+			<rgb name="baseColor" value="0.75 0.83 0.83"/>
+			<float name="specularTransmission" value="0.0"/>
+			<float name="metallic" value="0.9"/>
+			<float name="subsurface" value="0.5"/>
+			<float name="specular" value="0.5"/>
+			<float name="roughness" value="0.2"/>
+			<float name="specularTint" value="0.5"/>
+			<float name="anisotropic" value="0.0"/>
+			<float name="sheen" value="1.0"/>
+			<float name="sheenTint" value="0.5"/>
+			<float name="clearcoat" value="0.5"/>
+			<float name="clearcoatGloss" value="0.5"/>
+			<float name="eta" value="1.5"/>
+		</bsdf> -->
+	</shape>
+	<shape type="ply">
+		<string name="filename" value="meshes/Mesh.ply"/>
+           <bsdf type="diffuse" id="diffmat">
+			<rgb name="reflectance" value="0.82 0.67 0.16"/>
+		</bsdf>
+        
+		<!-- <bsdf type="disneybsdf">
+			<rgb name="baseColor" value="0.82 0.67 0.16"/>
+			<float name="specularTransmission" value="0.0"/>
+			<float name="metallic" value="0.0"/>
+			<float name="subsurface" value="0.5"/>
+			<float name="specular" value="0.5"/>
+			<float name="roughness" value="0.5"/>
+			<float name="specularTint" value="0.5"/>
+			<float name="anisotropic" value="0.0"/>
+			<float name="sheen" value="0.0"/>
+			<float name="sheenTint" value="0.5"/>
+			<float name="clearcoat" value="0.0"/>
+			<float name="clearcoatGloss" value="0.5"/>
+			<float name="eta" value="1.5"/>
+		</bsdf> -->
+	</shape>
+	<shape type="ply">
+		<string name="filename" value="meshes/bunny_fine_001.ply"/>
+		<!-- <bsdf type="disneybsdf">
+			<rgb name="baseColor" value="0.5 0.23 0.84"/>
+			<float name="specularTransmission" value="0.0"/>
+			<float name="metallic" value="0.5"/>
+			<float name="subsurface" value="1.0"/>
+			<float name="specular" value="1.0"/>
+			<float name="roughness" value="0.5"/>
+			<float name="specularTint" value="0.5"/>
+			<float name="anisotropic" value="0.1"/>
+			<float name="sheen" value="0.5"/>
+			<float name="sheenTint" value="0.5"/>
+			<float name="clearcoat" value="0.5"/>
+			<float name="clearcoatGloss" value="0.5"/>
+			<float name="eta" value="1.5"/>
+		</bsdf> -->
+        <bsdf type="roughplastic">
+			<rgb name="diffuseReflectance" value="0.5 0.23 0.84"/>
+			<float name="roughness" value="0.5"/>
+		</bsdf>
+	</shape>
+</scene>
