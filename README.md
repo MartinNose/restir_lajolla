@@ -4,7 +4,7 @@
 
 <img src="assets/image-20230327234919610.png" alt="image-20230327234919610" style="zoom:36%;" />
 
-This is an implementation of ReSTIR with spatial reuse in Lajolla, UCSD CSE 272 renderer.
+This is an implementation of ReSTIR with spatial reuse in [lajolla](https://github.com/BachiLi/lajolla_public), UCSD CSE 272 renderer.
 
 # Build
 All the dependencies are included. Use CMake to build.
